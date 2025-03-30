@@ -149,89 +149,89 @@ The system comes with pre-populated sample data including:
 
 Query 1: List all employees with their department name and job role title
 
-| employee_name      | department  | job_role    |
-| ------------------ | ----------- | ----------- |
-| Alexa Livingston   | Marketing   | Engineer    |
-| Alicia Atkinson    | Engineering | Engineer    |
-| Amanda Hughes      | Engineering | Analyst     |
-| Andrew Gomez       | Marketing   | Manager     |
-| Anthony Duke       | HR          | Specialist  |
-| Anthony Jenkins    | Engineering | Specialist  |
-| Arthur Murphy      | Engineering | Manager     |
-| Brandon Hodges     | Engineering | Analyst     |
-| Charles Carney     | Finance     | Specialist  |
-| Chase Myers        | Marketing   | Engineer    |
-| Daniel Mays        | Engineering | Coordinator |
-| David Nixon        | Sales       | Manager     |
-| David Parks        | HR          | Analyst     |
-| David Pugh         | Engineering | Analyst     |
-| Derek Trujillo     | Finance     | Analyst     |
-| Douglas Gonzales   | HR          | Engineer    |
-| Dylan Robinson     | HR          | Manager     |
-| Hannah Rodgers     | Finance     | Engineer    |
-| Hannah Stevens     | HR          | Engineer    |
-| Jack Smith         | Sales       | Engineer    |
-| Jason Kramer       | Sales       | Engineer    |
-| Jesse Jackson      | Marketing   | Manager     |
-| Jesse Kennedy      | HR          | Coordinator |
-| Jessica Walker     | Marketing   | Analyst     |
-| Kristina Leblanc   | Engineering | Engineer    |
-| Kristine Wilson    | Engineering | Manager     |
-| Kyle Patel         | HR          | Manager     |
-| Lisa Harris        | Sales       | Specialist  |
-| Luis Hopkins       | Finance     | Coordinator |
-| Marie Taylor       | Marketing   | Engineer    |
-| Matthew Carlson    | Finance     | Coordinator |
-| Melissa Williams   | Finance     | Analyst     |
-| Michael Cooke      | Engineering | Engineer    |
-| Micheal Lee        | Engineering | Manager     |
-| Miranda Hayes      | HR          | Manager     |
-| Nicholas Wagner    | Sales       | Coordinator |
-| Nicolas Willis     | Finance     | Manager     |
-| Phillip Johnson    | Engineering | Engineer    |
-| Rebecca Floyd      | Engineering | Coordinator |
-| Renee Chan         | HR          | Specialist  |
-| Richard Taylor     | Marketing   | Specialist  |
-| Scott Chavez       | Sales       | Engineer    |
-| Scott Curtis       | Marketing   | Analyst     |
-| Sharon Ford        | Finance     | Analyst     |
-| Stephanie Martinez | HR          | Manager     |
-| Steven Jones       | Marketing   | Engineer    |
-| Steven Valencia    | Finance     | Manager     |
-| Tammy Johnson      | Finance     | Engineer    |
-| Vincent Henderson  | HR          | Manager     |
-| William Warren     | HR          | Specialist  |
+| id | employee_name      | department_name | job_role    |
+| -- | ------------------ | --------------- | ----------- |
+| 14 | Alexa Livingston   | Marketing       | Engineer    |
+| 8  | Alicia Atkinson    | Engineering     | Engineer    |
+| 1  | Amanda Hughes      | Engineering     | Analyst     |
+| 22 | Andrew Gomez       | Marketing       | Manager     |
+| 26 | Anthony Duke       | HR              | Specialist  |
+| 9  | Anthony Jenkins    | Engineering     | Specialist  |
+| 13 | Arthur Murphy      | Engineering     | Manager     |
+| 7  | Brandon Hodges     | Engineering     | Analyst     |
+| 49 | Charles Carney     | Finance         | Specialist  |
+| 16 | Chase Myers        | Marketing       | Engineer    |
+| 11 | Daniel Mays        | Engineering     | Coordinator |
+| 38 | David Nixon        | Sales           | Manager     |
+| 23 | David Parks        | HR              | Analyst     |
+| 6  | David Pugh         | Engineering     | Analyst     |
+| 46 | Derek Trujillo     | Finance         | Analyst     |
+| 24 | Douglas Gonzales   | HR              | Engineer    |
+| 28 | Dylan Robinson     | HR              | Manager     |
+| 41 | Hannah Rodgers     | Finance         | Engineer    |
+| 27 | Hannah Stevens     | HR              | Engineer    |
+| 35 | Jack Smith         | Sales           | Engineer    |
+| 39 | Jason Kramer       | Sales           | Engineer    |
+| 20 | Jesse Jackson      | Marketing       | Manager     |
+| 29 | Jesse Kennedy      | HR              | Coordinator |
+| 21 | Jessica Walker     | Marketing       | Analyst     |
+| 2  | Kristina Leblanc   | Engineering     | Engineer    |
+| 4  | Kristine Wilson    | Engineering     | Manager     |
+| 33 | Kyle Patel         | HR              | Manager     |
+| 37 | Lisa Harris        | Sales           | Specialist  |
+| 42 | Luis Hopkins       | Finance         | Coordinator |
+| 15 | Marie Taylor       | Marketing       | Engineer    |
+| 44 | Matthew Carlson    | Finance         | Coordinator |
+| 50 | Melissa Williams   | Finance         | Analyst     |
+| 12 | Michael Cooke      | Engineering     | Engineer    |
+| 10 | Micheal Lee        | Engineering     | Manager     |
+| 32 | Miranda Hayes      | HR              | Manager     |
+| 40 | Nicholas Wagner    | Sales           | Coordinator |
+| 47 | Nicolas Willis     | Finance         | Manager     |
+| 5  | Phillip Johnson    | Engineering     | Engineer    |
+| 3  | Rebecca Floyd      | Engineering     | Coordinator |
+| 30 | Renee Chan         | HR              | Specialist  |
+| 17 | Richard Taylor     | Marketing       | Specialist  |
+| 36 | Scott Chavez       | Sales           | Engineer    |
+| 19 | Scott Curtis       | Marketing       | Analyst     |
+| 43 | Sharon Ford        | Finance         | Analyst     |
+| 31 | Stephanie Martinez | HR              | Manager     |
+| 18 | Steven Jones       | Marketing       | Engineer    |
+| 48 | Steven Valencia    | Finance         | Manager     |
+| 45 | Tammy Johnson      | Finance         | Engineer    |
+| 25 | Vincent Henderson  | HR              | Manager     |
+| 34 | William Warren     | HR              | Specialist  |
 
 Query 2: Find employees who have been with the company for more than 5 years
 
-| employee_name      | tenure_years |
-| ------------------ | ------------ |
-| Anthony Duke       | 10           |
-| Brandon Hodges     | 9            |
-| Kristina Leblanc   | 9            |
-| Miranda Hayes      | 9            |
-| Scott Curtis       | 9            |
-| Andrew Gomez       | 9            |
-| Rebecca Floyd      | 8            |
-| Michael Cooke      | 8            |
-| Steven Valencia    | 8            |
-| Arthur Murphy      | 8            |
-| Micheal Lee        | 8            |
-| Douglas Gonzales   | 8            |
-| Phillip Johnson    | 7            |
-| Vincent Henderson  | 7            |
-| Matthew Carlson    | 7            |
-| Hannah Stevens     | 7            |
-| Kristine Wilson    | 7            |
-| Melissa Williams   | 7            |
-| Dylan Robinson     | 6            |
-| Alicia Atkinson    | 6            |
-| Steven Jones       | 6            |
-| Nicolas Willis     | 6            |
-| Stephanie Martinez | 6            |
-| Jessica Walker     | 5            |
-| Luis Hopkins       | 5            |
-| Daniel Mays        | 5            |
+| id | employee_name      | tenure_years |
+| -- | ------------------ | ------------ |
+| 26 | Anthony Duke       | 10           |
+| 7  | Brandon Hodges     | 9            |
+| 2  | Kristina Leblanc   | 9            |
+| 32 | Miranda Hayes      | 9            |
+| 19 | Scott Curtis       | 9            |
+| 22 | Andrew Gomez       | 9            |
+| 3  | Rebecca Floyd      | 8            |
+| 12 | Michael Cooke      | 8            |
+| 48 | Steven Valencia    | 8            |
+| 13 | Arthur Murphy      | 8            |
+| 10 | Micheal Lee        | 8            |
+| 24 | Douglas Gonzales   | 8            |
+| 5  | Phillip Johnson    | 7            |
+| 25 | Vincent Henderson  | 7            |
+| 44 | Matthew Carlson    | 7            |
+| 27 | Hannah Stevens     | 7            |
+| 4  | Kristine Wilson    | 7            |
+| 50 | Melissa Williams   | 7            |
+| 28 | Dylan Robinson     | 6            |
+| 8  | Alicia Atkinson    | 6            |
+| 18 | Steven Jones       | 6            |
+| 47 | Nicolas Willis     | 6            |
+| 31 | Stephanie Martinez | 6            |
+| 21 | Jessica Walker     | 5            |
+| 42 | Luis Hopkins       | 5            |
+| 11 | Daniel Mays        | 5            |
 
 Query 3: Calculate the average salary per department
 
@@ -245,25 +245,25 @@ Query 3: Calculate the average salary per department
 
 Query 4: Retrieve employees who report to a specific manager (e.g., 'David Pugh')
 
-| name               | email                          | salary    |
-| ------------------ | ------------------------------ | --------- |
-| Amanda Hughes      | amanda.hughes@example.com      | 92273.81  |
-| Brandon Hodges     | brandon.hodges@example.com     | 72549.15  |
-| Hannah Rodgers     | hannah.rodgers@example.com     | 94025.49  |
-| Jack Smith         | jack.smith@example.com         | 87016.08  |
-| Kristina Leblanc   | kristina.leblanc@example.com   | 77169.46  |
-| Matthew Carlson    | matthew.carlson@example.com    | 96571.99  |
-| Micheal Lee        | micheal.lee@example.com        | 102325.22 |
-| Phillip Johnson    | phillip.johnson@example.com    | 66778.17  |
-| Stephanie Martinez | stephanie.martinez@example.com | 88810.18  |
-| William Warren     | william.warren@example.com     | 75269.55  |
+| employee_id | employee_name      | manager_name |
+| ----------- | ------------------ | ------------ |
+| 1           | Amanda Hughes      | David Pugh   |
+| 7           | Brandon Hodges     | David Pugh   |
+| 41          | Hannah Rodgers     | David Pugh   |
+| 35          | Jack Smith         | David Pugh   |
+| 2           | Kristina Leblanc   | David Pugh   |
+| 44          | Matthew Carlson    | David Pugh   |
+| 10          | Micheal Lee        | David Pugh   |
+| 5           | Phillip Johnson    | David Pugh   |
+| 31          | Stephanie Martinez | David Pugh   |
+| 34          | William Warren     | David Pugh   |
 
 Query 5: Retrieve the top 5 highest-paid employees
 
-| name             | salary    |
-| ---------------- | --------- |
-| Daniel Mays      | 118336.30 |
-| Rebecca Floyd    | 117010.95 |
-| Jesse Jackson    | 111750.01 |
-| Steven Jones     | 111583.03 |
-| Douglas Gonzales | 110067.02 |
+| id | name             | salary    |
+| -- | ---------------- | --------- |
+| 11 | Daniel Mays      | 118336.30 |
+| 3  | Rebecca Floyd    | 117010.95 |
+| 20 | Jesse Jackson    | 111750.01 |
+| 18 | Steven Jones     | 111583.03 |
+| 24 | Douglas Gonzales | 110067.02 |
