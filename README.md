@@ -1,4 +1,4 @@
-# Employee Management System v2
+# Employee Management System
 
 A comprehensive PostgreSQL-based Employee Management System that efficiently manages employee data, departments, job roles, and organizational hierarchy. This system provides robust data management capabilities with optimized performance through strategic indexing.
 
