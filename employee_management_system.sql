@@ -235,9 +235,10 @@ WHERE name IN (
 -- 4. SQL Queries
 
 -- Query 1: List all employees with their department name and job role title
-SELECT 
+SELECT
+    e.id,
     e.name AS employee_name,
-    d.name AS department,
+    d.name AS department_name,
     j.title AS job_role
 FROM 
     emp_mgnt.employees e
@@ -250,6 +251,7 @@ ORDER BY
 
 -- Query 2: Find employees who have been with the company for more than 5 years
 SELECT 
+    e.id,
     e.name AS employee_name,
     EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining)) AS tenure_years
 FROM 
@@ -273,10 +275,10 @@ ORDER BY
     average_salary DESC;
 
 -- Query 4: Retrieve employees who report to a specific manager (e.g., 'David Pugh')
-SELECT 
-    e.name,
-    e.email,
-    e.salary
+SELECT
+    e.id AS employee_id,
+    e.name AS employee_name,
+    m.name AS manager_name
 FROM 
     emp_mgnt.employees e
 JOIN 
@@ -288,6 +290,7 @@ ORDER BY
 
 -- Query 5: Retrieve the top 5 highest-paid employees
 SELECT 
+    e.id,
     e.name,
     e.salary
 FROM 
