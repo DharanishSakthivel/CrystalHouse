@@ -1,9 +1,14 @@
 -- Employee Management System PostgreSQL Schema
 -- Created: 2025-03-30
 -- Developer Name: Dharanish S
--- Comments: Created the table and store procedure and functions with reason.
+-- Comments: A comprehensive employee management system that handles employee data, departments, and job roles.
+
+--Creating the Database
+
+CREATE DATABASE employee_management;
 
 --Create a Schema for the database for making the db objects as a organized way
+
 CREATE SCHEMA emp_mgnt;
 
 -- 1. Create Tables with Appropriate Data Types and Constraints
