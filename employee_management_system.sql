@@ -1,7 +1,8 @@
 -- Employee Management System PostgreSQL Schema
--- Created: 2025-03-30
--- Developer Name: Dharanish S
--- Comments: A comprehensive employee management system that handles employee data, departments, and job roles.
+
+-- Date          Ticket Number     Developer Name      Comments 
+-- 30-MAR-2025   emp_mgnt-01       Dharanish S         Creating a comprehensive employee management system that handles employee data, departments, and job roles.
+ 
 
 --Creating the Database
 
