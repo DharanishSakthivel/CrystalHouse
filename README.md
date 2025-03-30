@@ -13,6 +13,12 @@ A comprehensive PostgreSQL-based Employee Management System that efficiently man
 
 ## Database Schema
 
+Schema has been created for making tables, store procedure, functions in the organized way. 
+
+CREATE SCHEMA emp_mgnt;
+
+The system uses PostgreSQL with the following structure:
+
 ### Tables
 
 1. **Departments**
@@ -38,6 +44,20 @@ A comprehensive PostgreSQL-based Employee Management System that efficiently man
    - `manager_id`: INTEGER (Self-referencing Foreign Key)
    - `create_date`: TIMESTAMP
    - `update_date`: TIMESTAMP
+
+## Data Processing
+
+The system includes a Python script (`read_excel.py`) that:
+- Reads employee data from Excel files
+- Processes and validates the data
+- Exports the data to JSON format for easy integration
+
+## Project Structure
+
+- `employee_management_system.sql`: Database schema definition
+- `read_excel.py`: Data processing script
+- `Sheet1_data.json`: Processed employee data
+- `Attachments/`: Contains source data files
 
 ### Performance Optimizations
 
@@ -108,52 +128,6 @@ The system comes with pre-populated sample data including:
    ```
    Returns the total number of employees in a specific department.
 
-### Sample Queries
-
-1. **List Employees with Department and Role**
-   ```sql
-   SELECT 
-       e.name AS employee_name,
-       d.name AS department,
-       j.title AS job_role
-   FROM 
-       emp_mgnt.employees e
-   JOIN 
-       emp_mgnt.departments d ON e.department_id = d.id
-   JOIN
-       emp_mgnt.job_roles j ON e.job_role_id = j.id
-   ORDER BY
-       e.name;
-   ```
-
-2. **Find Long-term Employees (>5 years)**
-   ```sql
-   SELECT 
-       e.name AS employee_name,
-       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining)) AS tenure_years
-   FROM 
-       emp_mgnt.employees e
-   WHERE 
-       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining)) >= 5
-   ORDER BY 
-       tenure_years DESC;
-   ```
-
-3. **Department Average Salary**
-   ```sql
-   SELECT 
-       d.name AS department,
-       ROUND(AVG(e.salary), 2) AS average_salary
-   FROM 
-       emp_mgnt.departments d
-   JOIN 
-       emp_mgnt.employees e ON d.id = e.department_id
-   GROUP BY 
-       d.name
-   ORDER BY 
-       average_salary DESC;
-   ```
-
 ## Best Practices
 
 1. **Data Integrity**
@@ -171,7 +145,125 @@ The system comes with pre-populated sample data including:
    - Salary validation (must be positive)
    - Schema-based organization for better access control
 
-## Version History
+### Sample Outputs of the SQL Queries
 
-- v2.0: Enhanced documentation, added sample queries and best practices
-- v1.0: Initial release with basic functionality
+Query 1: List all employees with their department name and job role title
+
+| employee_name      | department  | job_role    |
+| ------------------ | ----------- | ----------- |
+| Alexa Livingston   | Marketing   | Engineer    |
+| Alicia Atkinson    | Engineering | Engineer    |
+| Amanda Hughes      | Engineering | Analyst     |
+| Andrew Gomez       | Marketing   | Manager     |
+| Anthony Duke       | HR          | Specialist  |
+| Anthony Jenkins    | Engineering | Specialist  |
+| Arthur Murphy      | Engineering | Manager     |
+| Brandon Hodges     | Engineering | Analyst     |
+| Charles Carney     | Finance     | Specialist  |
+| Chase Myers        | Marketing   | Engineer    |
+| Daniel Mays        | Engineering | Coordinator |
+| David Nixon        | Sales       | Manager     |
+| David Parks        | HR          | Analyst     |
+| David Pugh         | Engineering | Analyst     |
+| Derek Trujillo     | Finance     | Analyst     |
+| Douglas Gonzales   | HR          | Engineer    |
+| Dylan Robinson     | HR          | Manager     |
+| Hannah Rodgers     | Finance     | Engineer    |
+| Hannah Stevens     | HR          | Engineer    |
+| Jack Smith         | Sales       | Engineer    |
+| Jason Kramer       | Sales       | Engineer    |
+| Jesse Jackson      | Marketing   | Manager     |
+| Jesse Kennedy      | HR          | Coordinator |
+| Jessica Walker     | Marketing   | Analyst     |
+| Kristina Leblanc   | Engineering | Engineer    |
+| Kristine Wilson    | Engineering | Manager     |
+| Kyle Patel         | HR          | Manager     |
+| Lisa Harris        | Sales       | Specialist  |
+| Luis Hopkins       | Finance     | Coordinator |
+| Marie Taylor       | Marketing   | Engineer    |
+| Matthew Carlson    | Finance     | Coordinator |
+| Melissa Williams   | Finance     | Analyst     |
+| Michael Cooke      | Engineering | Engineer    |
+| Micheal Lee        | Engineering | Manager     |
+| Miranda Hayes      | HR          | Manager     |
+| Nicholas Wagner    | Sales       | Coordinator |
+| Nicolas Willis     | Finance     | Manager     |
+| Phillip Johnson    | Engineering | Engineer    |
+| Rebecca Floyd      | Engineering | Coordinator |
+| Renee Chan         | HR          | Specialist  |
+| Richard Taylor     | Marketing   | Specialist  |
+| Scott Chavez       | Sales       | Engineer    |
+| Scott Curtis       | Marketing   | Analyst     |
+| Sharon Ford        | Finance     | Analyst     |
+| Stephanie Martinez | HR          | Manager     |
+| Steven Jones       | Marketing   | Engineer    |
+| Steven Valencia    | Finance     | Manager     |
+| Tammy Johnson      | Finance     | Engineer    |
+| Vincent Henderson  | HR          | Manager     |
+| William Warren     | HR          | Specialist  |
+
+Query 2: Find employees who have been with the company for more than 5 years
+
+| employee_name      | tenure_years |
+| ------------------ | ------------ |
+| Anthony Duke       | 10           |
+| Brandon Hodges     | 9            |
+| Kristina Leblanc   | 9            |
+| Miranda Hayes      | 9            |
+| Scott Curtis       | 9            |
+| Andrew Gomez       | 9            |
+| Rebecca Floyd      | 8            |
+| Michael Cooke      | 8            |
+| Steven Valencia    | 8            |
+| Arthur Murphy      | 8            |
+| Micheal Lee        | 8            |
+| Douglas Gonzales   | 8            |
+| Phillip Johnson    | 7            |
+| Vincent Henderson  | 7            |
+| Matthew Carlson    | 7            |
+| Hannah Stevens     | 7            |
+| Kristine Wilson    | 7            |
+| Melissa Williams   | 7            |
+| Dylan Robinson     | 6            |
+| Alicia Atkinson    | 6            |
+| Steven Jones       | 6            |
+| Nicolas Willis     | 6            |
+| Stephanie Martinez | 6            |
+| Jessica Walker     | 5            |
+| Luis Hopkins       | 5            |
+| Daniel Mays        | 5            |
+
+Query 3: Calculate the average salary per department
+
+| department  | average_salary |
+| ----------- | -------------- |
+| Engineering | 90192.03       |
+| Marketing   | 87832.74       |
+| Sales       | 80881.95       |
+| HR          | 77206.78       |
+| Finance     | 72118.68       |
+
+Query 4: Retrieve employees who report to a specific manager (e.g., 'David Pugh')
+
+| name               | email                          | salary    |
+| ------------------ | ------------------------------ | --------- |
+| Amanda Hughes      | amanda.hughes@example.com      | 92273.81  |
+| Brandon Hodges     | brandon.hodges@example.com     | 72549.15  |
+| Hannah Rodgers     | hannah.rodgers@example.com     | 94025.49  |
+| Jack Smith         | jack.smith@example.com         | 87016.08  |
+| Kristina Leblanc   | kristina.leblanc@example.com   | 77169.46  |
+| Matthew Carlson    | matthew.carlson@example.com    | 96571.99  |
+| Micheal Lee        | micheal.lee@example.com        | 102325.22 |
+| Phillip Johnson    | phillip.johnson@example.com    | 66778.17  |
+| Stephanie Martinez | stephanie.martinez@example.com | 88810.18  |
+| William Warren     | william.warren@example.com     | 75269.55  |
+
+Query 5: Retrieve the top 5 highest-paid employees
+
+| name             | salary    |
+| ---------------- | --------- |
+| Daniel Mays      | 118336.30 |
+| Rebecca Floyd    | 117010.95 |
+| Jesse Jackson    | 111750.01 |
+| Steven Jones     | 111583.03 |
+| Douglas Gonzales | 110067.02 |
