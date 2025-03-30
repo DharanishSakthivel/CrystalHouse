@@ -1,5 +1,10 @@
 -- Employee Management System PostgreSQL Schema
--- Created: 2025-03-28
+-- Created: 2025-03-30
+-- Developer Name: Dharanish S
+-- Comments: Created the table and store procedure and functions with reason.
+
+--Create a Schema for the database for making the db objects as a organized way
+CREATE SCHEMA emp_mgnt;
 
 -- 1. Create Tables with Appropriate Data Types and Constraints
 
@@ -237,7 +242,6 @@ JOIN
 ORDER BY
     e.name;
 
-
 -- Query 2: Find employees who have been with the company for more than 5 years
 SELECT 
     e.name AS employee_name,
@@ -249,37 +253,26 @@ WHERE
 ORDER BY 
     tenure_years DESC;
 
-
 -- Query 3: Calculate the average salary per department
 SELECT 
-    d.id,
     d.name AS department,
-    ROUND(AVG(e.salary), 2) AS average_salary,
-    COUNT(e.id) AS employee_count
+    ROUND(AVG(e.salary), 2) AS average_salary
 FROM 
     emp_mgnt.departments d
 JOIN 
     emp_mgnt.employees e ON d.id = e.department_id
 GROUP BY 
-    d.id, d.name
+    d.name
 ORDER BY 
     average_salary DESC;
 
-
 -- Query 4: Retrieve employees who report to a specific manager (e.g., 'David Pugh')
 SELECT 
-    e.id,
     e.name,
     e.email,
-    d.name AS department,
-    j.title AS job_role,
     e.salary
 FROM 
     emp_mgnt.employees e
-JOIN 
-    emp_mgnt.departments d ON e.department_id = d.id
-JOIN 
-    emp_mgnt.job_roles j ON e.job_role_id = j.id
 JOIN 
     emp_mgnt.employees m ON e.manager_id = m.id
 WHERE 
@@ -287,15 +280,10 @@ WHERE
 ORDER BY 
     e.name;
 
-
 -- Query 5: Retrieve the top 5 highest-paid employees
 SELECT 
-    e.id,
     e.name,
-    e.email,
-    e.department_id,
-    e.salary,
-    e.date_of_joining
+    e.salary
 FROM 
     emp_mgnt.employees e
 ORDER BY 
@@ -375,26 +363,3 @@ CREATE INDEX idx_employees_dept_job ON emp_mgnt.employees(department_id, job_rol
 
 -- Index for email lookups (common in authentication systems)
 CREATE INDEX idx_employees_email ON emp_mgnt.employees(email);
-
--- Example usage queries:
-
--- 1. List all employees with department and job role
---SELECT * FROM emp_mgnt.employee_details;
-
--- 2. Find employees with more than 5 years tenure
---SELECT * FROM emp_mgnt.get_employees_with_tenure(5);
-
--- 3. Calculate average salary per department
---SELECT * FROM emp_mgnt.department_avg_salary;
-
--- 4. Find employees reporting to a specific manager
---SELECT * FROM emp_mgnt.get_employees_by_manager('David Pugh');
-
--- 5. List top 5 highest-paid employees
---SELECT * FROM emp_mgnt.top_paid_employees;
-
--- 6. Update an employee's salary based on performance
--- CALL update_salary_by_performance(1, 'Excellent');
-
--- 7. Get the count of employees in a department
--- SELECT get_department_employee_count(1) AS engineering_employee_count;

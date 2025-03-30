@@ -1,6 +1,15 @@
-# Employee Management System
+# Employee Management System v2
 
-A comprehensive PostgreSQL-based Employee Management System that handles employee data, departments, job roles, and organizational hierarchy.
+A comprehensive PostgreSQL-based Employee Management System that efficiently manages employee data, departments, job roles, and organizational hierarchy. This system provides robust data management capabilities with optimized performance through strategic indexing.
+
+## Features
+
+- Complete employee information management
+- Department and job role organization
+- Hierarchical management structure
+- Salary management and performance-based updates
+- Comprehensive reporting capabilities
+- Optimized query performance through strategic indexing
 
 ## Database Schema
 
@@ -32,7 +41,7 @@ A comprehensive PostgreSQL-based Employee Management System that handles employe
 
 ### Performance Optimizations
 
-The following indexes are implemented for optimal query performance:
+Strategic indexes implemented for optimal query performance:
 
 - `idx_employees_department_id`: Index on department_id for faster joins
 - `idx_employees_job_role_id`: Index on job_role_id for faster joins
@@ -42,26 +51,41 @@ The following indexes are implemented for optimal query performance:
 - `idx_employees_dept_job`: Composite index for department and job role filtering
 - `idx_employees_email`: Index for email lookups
 
-## Local Setup Instructions
+## Setup Instructions
 
-1. **Prerequisites**
-   - PostgreSQL 12 or higher
-   - psql command-line tool
+### Prerequisites
 
-2. **Database Setup**
+- PostgreSQL 12 or higher
+- psql command-line tool
+
+### Database Setup
+
+1. **Connect to PostgreSQL**
    ```bash
-   # Connect to PostgreSQL
    psql -U postgres
+   ```
 
-   # Create a new database
+2. **Create Database**
+   ```sql
    CREATE DATABASE employee_management;
+   ```
 
-   # Connect to the new database
+3. **Connect to Database**
+   ```sql
    \c employee_management
+   ```
 
-   # Create the schema and tables
+4. **Create Schema and Tables**
+   ```sql
    \i employee_management_system.sql
    ```
+
+## Sample Data
+
+The system comes with pre-populated sample data including:
+- 5 departments (Engineering, Marketing, HR, Sales, Finance)
+- 5 job roles (Analyst, Engineer, Manager, Specialist, Coordinator)
+- 45+ employees with various roles and reporting structures
 
 ## Key Features
 
@@ -71,8 +95,10 @@ The following indexes are implemented for optimal query performance:
    ```sql
    CALL emp_mgnt.update_salary_by_performance(employee_id, performance_rating);
    ```
-   - Updates employee salary based on performance rating
-   - Performance ratings: 'Excellent' (10%), 'Good' (5%), 'Average' (2%)
+   Updates employee salary based on performance rating:
+   - 'Excellent': 10% increase
+   - 'Good': 5% increase
+   - 'Average': 2% increase
 
 ### Functions
 
@@ -80,7 +106,7 @@ The following indexes are implemented for optimal query performance:
    ```sql
    SELECT emp_mgnt.get_department_employee_count(department_id);
    ```
-   - Returns the total number of employees in a specific department
+   Returns the total number of employees in a specific department.
 
 ### Sample Queries
 
@@ -100,15 +126,15 @@ The following indexes are implemented for optimal query performance:
        e.name;
    ```
 
-2. **Find Long-tenure Employees**
+2. **Find Long-term Employees (>5 years)**
    ```sql
    SELECT 
-       name AS employee_name,
-       EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_of_joining)) AS tenure_years
+       e.name AS employee_name,
+       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining)) AS tenure_years
    FROM 
-       emp_mgnt.employees
+       emp_mgnt.employees e
    WHERE 
-       EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_of_joining)) >= 5
+       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining)) >= 5
    ORDER BY 
        tenure_years DESC;
    ```
@@ -117,38 +143,35 @@ The following indexes are implemented for optimal query performance:
    ```sql
    SELECT 
        d.name AS department,
-       ROUND(AVG(e.salary), 2) AS average_salary,
-       COUNT(e.id) AS employee_count
+       ROUND(AVG(e.salary), 2) AS average_salary
    FROM 
        emp_mgnt.departments d
    JOIN 
        emp_mgnt.employees e ON d.id = e.department_id
    GROUP BY 
-       d.id, d.name
+       d.name
    ORDER BY 
        average_salary DESC;
    ```
 
-## Sample Data
-
-The system comes with pre-populated sample data including:
-- 5 departments (Engineering, Marketing, HR, Sales, Finance)
-- 5 job roles (Analyst, Engineer, Manager, Specialist, Coordinator)
-- 50+ employee records with realistic salary distributions and reporting structures
-
 ## Best Practices
 
 1. **Data Integrity**
-   - Foreign key constraints ensure referential integrity
-   - CHECK constraints validate salary values
-   - UNIQUE constraints prevent duplicate entries
+   - Use appropriate constraints (NOT NULL, UNIQUE, CHECK)
+   - Implement proper foreign key relationships
+   - Maintain audit trails with create_date and update_date
 
 2. **Performance**
-   - Strategic indexes for common query patterns
-   - Optimized joins using appropriate indexes
-   - Efficient hierarchical queries for reporting structure
+   - Strategic indexing for common queries
+   - Composite indexes for frequently combined filters
+   - Self-referencing relationships for hierarchy
 
-3. **Maintainability**
-   - Organized schema structure
-   - Documented stored procedures and functions
-   - Consistent naming conventions
+3. **Security**
+   - Email uniqueness enforcement
+   - Salary validation (must be positive)
+   - Schema-based organization for better access control
+
+## Version History
+
+- v2.0: Enhanced documentation, added sample queries and best practices
+- v1.0: Initial release with basic functionality
